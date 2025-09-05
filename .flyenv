@@ -1,0 +1,2 @@
+[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+$env:PATH = "C:\Users\Danish\AppData\Local\Programs\PhpWebStudy-Data\app\nodejs\v22.18.0;" + $env:PATH #FlyEnv-ID-q40SFOJO3pQlzAHjJ5UJsF5FFczVBpAt
