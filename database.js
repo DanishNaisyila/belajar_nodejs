@@ -1,5 +1,5 @@
 const sqlite3 = require('sqlite3').verbose();
-const DBSOURCE = 'movies-api.db';
+const DBSOURCE = 'directors-api.db';
 
 const db = new sqlite3.Database(DBSOURCE, (err) => {
     if (err) {
@@ -10,21 +10,31 @@ const db = new sqlite3.Database(DBSOURCE, (err) => {
         console.log('Connected to the SQLite database.');
 
         // Create the movies table
-        db.run(`CREATE TABLE IF NOT EXISTS movies (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            title TEXT NOT NULL,
-            director TEXT NOT NULL,
-            year INTEGER NOT NULL
-        )`, (err) => {
-            if (!err) {
-                // Insert initial data if the table was just created
-                const insert = 'INSERT INTO movies (title, director, year) VALUES (?,?,?)';
-                db.run(insert, ["LOTR", "Peter Jackson", 1999]);
-                db.run(insert, ["Avengers", "Anthony Russo", 2019]);
-                db.run(insert, ["Spiderman", "Sam Raimi", 2004]);
-                console.log('Sample data inserted into movies table.');
-            }
-        });
+        // db.run(`CREATE TABLE IF NOT EXISTS movies (
+        //     id INTEGER PRIMARY KEY AUTOINCREMENT,
+        //     title TEXT NOT NULL,
+        //     director TEXT NOT NULL,
+        //     year INTEGER NOT NULL
+        // )`, (err) => {
+        //     if (!err) {
+        //         // Insert initial data if the table was just created
+        //         const insert = 'INSERT INTO movies (title, director, year) VALUES (?,?,?)';
+        //         db.run(insert, ["LOTR", "Peter Jackson", 1999]);
+        //         db.run(insert, ["Avengers", "Anthony Russo", 2019]);
+        //         db.run(insert, ["Spiderman", "Sam Raimi", 2004]);
+        //         console.log('Sample data inserted into movies table.');
+        //     }
+        // });
+
+        // db.run (`CREATE TABLE IF NOT EXISTS users (
+        //     id INTEGER PRIMARY KEY AUTOINCREMENT,
+        //     username TEXT NOT NULL UNIQUE,
+        //     password TEXT NOT NULL
+        // )`, (err) => {
+        //     if (err) {
+        //         console.error("Gagal membuat tabel users:", err.message);
+        //     }
+        // });
 
         // Create the directors table
         db.run(`CREATE TABLE IF NOT EXISTS directors (
@@ -41,7 +51,17 @@ const db = new sqlite3.Database(DBSOURCE, (err) => {
                 console.log('Sample data inserted into directors table.');
             }
         });
-    }
-});
+        
+        db.run (`CREATE TABLE IF NOT EXISTS users (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    username TEXT NOT NULL UNIQUE,
+                    password TEXT NOT NULL
+                )`, (err) => {
+                    if (err) {
+                        console.error("Gagal membuat tabel users:", err.message);
+                    }
+                });
+            }
+        });
 
 module.exports = db;
