@@ -38,8 +38,8 @@
     Penerapan autentikasi dan otorisasi menggunakan JWT pada API Node.js berhasil meningkatkan keamanan sistem, karena hanya pengguna terverifikasi yang dapat mengakses dan mengelola data melalui proses login dan token yang valid.
 
 ## POSTMAN
-    **Movies**
+- Movies
     https://naisyiladanish-4163305.postman.co/workspace/Personal-Workspace~25c42560-9919-4618-a6d6-97fac72e69c1/collection/47980232-42d1e7dc-ae54-42d0-a47c-6dfd5e187ad3?action=share&source=copy-link&creator=47980232
 
-    **Directors**
+- Directors
     https://naisyiladanish-4163305.postman.co/workspace/Personal-Workspace~25c42560-9919-4618-a6d6-97fac72e69c1/collection/47980232-54f455c0-e827-4386-8ca5-d39691fa42ab?action=share&source=copy-link&creator=47980232
