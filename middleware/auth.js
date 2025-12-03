@@ -12,15 +12,23 @@ function authenticateToken(req, res, next) {
     if (err)
       return res.status(403).json({ error: 'Token tidak valid atau kedaluwarsa' });
 
-    req.user = decodedPayload.user; // { id, username, role }
+    req.user = decodedPayload.user;
     next();
   });
 }
 
 // Middleware Autorisasi (AuthZ)
-function authorizeRole(role) {
+function authorizeRole(roles = []) {
+  if (typeof roles === 'string') {
+    roles = [roles.toLowerCase()];
+  } else {
+    roles = roles.map(role => role.toLowerCase());
+  }
+
   return (req, res, next) => {
-    if (req.user && req.user.role === role) {
+    const userRole = req.user && req.user.role ? req.user.role.toLowerCase() : '';
+
+    if (roles.includes(userRole)) {
       next();
     } else {
       return res
